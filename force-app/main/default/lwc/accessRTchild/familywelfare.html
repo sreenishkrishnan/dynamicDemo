@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Family Welfare" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <template if:true={editmode}>
+                <!-- <div if:false={isLoaded} class="slds-is-relative"> -->
+                <lightning-input data-formfield="wfname" type="text" label="Enter FirstName" value={fname} onchange={handleFnameFieldChange}></lightning-input>
+                <lightning-input data-formfield="wlname" type="text" label="Enter Last Name" value={lname} onchange={handleLnameFieldChange}></lightning-input>
+                <!-- </div> -->
+                <lightning-button label="Save" onclick={saveData}>
+                </lightning-button>
+            </template>
+        </div>
+        <template if:false={editmode}>
+            <!-- <div if:false={isLoaded} class="slds-is-relative">
+                    <lightning-spinner variant="brand" size="large">
+                    </lightning-spinner>
+                </div> -->
+            <template if:false={isLoaded}>
+                <lightning-input readonly data-formfield="rfname" type="text" label="FirstName" value={fname}></lightning-input>
+                <lightning-input readonly data-formfield="rlname" type="text" label="Last Name" value={lname}></lightning-input>
+                <lightning-button label="Edit" onclick={switchMode}></lightning-button>
+            </template>
+        </template>
+    </lightning-card>
+</template>

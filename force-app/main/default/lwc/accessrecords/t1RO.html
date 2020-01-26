@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Land Planning" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-button label="Edit Case" variant="brand" onclick={saveT1Form} disabled={disabled}></lightning-button>
+            <lightning-input readonly data-formfield="landid" type="text" label="Enter Land ID" value="L001" onchange={handleFieldChange}></lightning-input>
+            <lightning-input readonly data-formfield="landaddress" type="text" label="Enter Land Address" value="36 airlie point cook" onchange={handleFieldChange}></lightning-input>
+            <!-- <lightning-button label="Update Case" variant="brand" onclick={saveT1Form} disabled={disabled}></lightning-button> -->
+        </div>
+    </lightning-card>
+</template>

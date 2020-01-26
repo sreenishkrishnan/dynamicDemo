@@ -1,0 +1,6 @@
+<template>
+    <template if:true={rtype}>
+        <!-- <lightning-button label="Edit Case" variant="brand" onclick={toggleEditMode}></lightning-button> -->
+        <c-access-r-tchild rtype={rtype} crecordid={recordId} recordval={record} jsonsum={jsonsum}></c-access-r-tchild>
+    </template>
+</template>

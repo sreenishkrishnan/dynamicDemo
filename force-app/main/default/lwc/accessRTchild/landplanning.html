@@ -1,0 +1,20 @@
+<template>
+
+    <lightning-card title="Land Planning" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <template if:true={editmode}>
+                <lightning-input data-formfield="wlandid" type="text" label="Enter Land ID" value={landid} onchange={handleLandIdFieldChange}></lightning-input>
+                <lightning-input data-formfield="wlandaddress" type="text" label="Enter Land Address" value={landaddress}
+                    onchange={handleLandAddressFieldChange}></lightning-input>
+                <lightning-button type="button" label="Save" onclick={saveData}>
+                </lightning-button>
+            </template>
+            <template if:false={editmode}>
+                <lightning-input readonly data-formfield="rlandid" type="text" label="Land ID" value={landid}></lightning-input>
+                <lightning-input readonly data-formfield="rlandaddress" type="text" label="Land Address" value={landaddress}></lightning-input>
+                <lightning-button  type="button" label="Edit" onclick={switchMode}>
+                </lightning-button>
+            </template>
+        </div>
+    </lightning-card>
+</template>
