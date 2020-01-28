@@ -21,15 +21,9 @@ export default class AccessRTchild extends LightningElement {
   @track landid = "";
   @track landaddress = "";
 
-  @track formdatafamilywelfare = {
-    fname: this.fname,
-    lname: this.lname
-  };
+  formdatafamilywelfare = {};
 
-  @track formdatalandplanning = {
-    landid: this.landid,
-    landaddress: this.landaddress
-  };
+  formdatalandplanning = {};
 
   render() {
     //console.log(`recordval is ${JSON.stringify(this.recordval)}`);
@@ -53,21 +47,22 @@ export default class AccessRTchild extends LightningElement {
     return this;
   }
 
-  handleFieldChange(e) {
-    console.log(`currenttarget is ${e.currentTarget}`);
-  }
-
   handleFnameFieldChange(e) {
-    this.fname = e.target.value;
+    this.formdatafamilywelfare["fname"] = e.target.value;
+    console.log(`family welfare is ${JSON.stringify(this.formdatafamilywelfare)}`);
   }
   handleLnameFieldChange(e) {
-    this.lname = e.target.value;
+    this.formdatafamilywelfare["lname"] = e.target.value;
+    console.log(`family welfare is ${JSON.stringify(this.formdatafamilywelfare)}`);
   }
   handleLandIdFieldChange(e) {
-    this.landid = e.target.value;
+    this.formdatalandplanning["landid"] = e.target.value;
+    console.log(`family welfare is ${JSON.stringify(this.formdatalandplanning)}`);
   }
   handleLandAddressFieldChange(e) {
-    this.landaddress = e.target.value;
+    this.formdatalandplanning["landaddress"] = e.target.value;
+    console.log(`family welfare is ${JSON.stringify(this.formdatalandplanning)}`);
+
   }
 
   switchMode() {
@@ -84,26 +79,26 @@ export default class AccessRTchild extends LightningElement {
   }
   saveFamilyWelfare(arr) {
     const fields = {};
-    console.log(`arr is ${arr[0]}`);
-    let a = this.template.querySelector(
-      `lightning-input[data-formfield=${arr[0]}]`
-    ).value;
-    let b = this.template.querySelector(
-      `lightning-input[data-formfield=${arr[1]}]`
-    ).value;
-    console.log(`a is ${a}`);
-    console.log(`b is ${b}`);
+    // console.log(`arr is ${arr[0]}`);
+    // let a = this.template.querySelector(
+    //   `lightning-input[data-formfield=${arr[0]}]`
+    // ).value;
+    // let b = this.template.querySelector(
+    //   `lightning-input[data-formfield=${arr[1]}]`
+    // ).value;
+    // console.log(`a is ${a}`);
+    // console.log(`b is ${b}`);
     let saveJSON = {};
     let key = "formdata";
     saveJSON[key] = [];
-    var data = {
-      fname: a,
-      lname: b
-    };
+    // var data = {
+    //   fname: a,
+    //   lname: b
+    // };
     //saveJSON[key].push(this.formdatafamilywelfare);
-    saveJSON[key].push(data);
+    console.log(`familywelfare ${this.formdatafamilywelfare}`);
+    saveJSON[key].push(this.formdatafamilywelfare);
 
-    console.log(`formdata save ${data}`);
     console.log(`recordid is ${this.crecordid}`);
     fields[ID_FIELD.fieldApiName] = this.crecordid;
     fields[JSON_FIELD.fieldApiName] = JSON.stringify(saveJSON);
@@ -132,25 +127,23 @@ export default class AccessRTchild extends LightningElement {
   }
   saveLandPlanning(arr) {
     const fields = {};
-    console.log(`arr is ${arr[0]}`);
-    let a = this.template.querySelector(
-      `lightning-input[data-formfield=${arr[0]}]`
-    ).value;
-    let b = this.template.querySelector(
-      `lightning-input[data-formfield=${arr[1]}]`
-    ).value;
-    console.log(`a is ${a}`);
-    console.log(`b is ${b}`);
+    // console.log(`arr is ${arr[0]}`);
+    // let a = this.template.querySelector(
+    //   `lightning-input[data-formfield=${arr[0]}]`
+    // ).value;
+    // let b = this.template.querySelector(
+    //   `lightning-input[data-formfield=${arr[1]}]`
+    // ).value;
+    // console.log(`a is ${a}`);
+    // console.log(`b is ${b}`);
     let saveJSON = {};
     let key = "formdata";
     saveJSON[key] = [];
-    var data = {
-      landid: a,
-      landaddress: b
-    };
-    saveJSON[key].push(data);
-
-    console.log(`form save data ${JSON.stringify(data)}`);
+    // var data = {
+    //   landid: a,
+    //   landaddress: b
+    // };
+    saveJSON[key].push(this.formdatalandplanning);
     console.log(`recordid is ${this.crecordid}`);
     fields[ID_FIELD.fieldApiName] = this.crecordid;
     fields[JSON_FIELD.fieldApiName] = JSON.stringify(saveJSON);
